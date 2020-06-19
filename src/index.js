@@ -11,11 +11,13 @@ import rootReducers from './reduces'
 import routers from './route'
 
 import NavgetionBar from './components/navgationBar'
+import FlashMessagesList from './components/flash/flashMessageList'
 const store = createStore(rootReducers, composeWithDevTools(applyMiddleware(logger, thunk)))
 ReactDOM.render(
   <Provider store={ store }>
     <Router routers={routers}>
       <NavgetionBar/>
+      <FlashMessagesList />
       { routers }
     </Router>
   </Provider>,

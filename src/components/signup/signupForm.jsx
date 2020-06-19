@@ -24,10 +24,19 @@ import { withRouter } from 'react-router-dom'
         this.props.signupAcrions.userSignupRequest(this.state)
             .then(() => {
                 // this.setState({isLoding: true})  
+                this.props.flashMessage.addflashMessage({
+                    type: 'success',
+                    text: "登录成功 永远永远"
+                })
                 this.props.history.push('/')          
             },
-                ({response}) => this.setState({ errors: response.data, isLoding:false })
-                 
+                ({response}) => {
+                    this.setState({ errors: response.data, isLoding:false })
+                this.props.flashMessage.addflashMessage({
+                    type: 'danger',
+                    text: "登录失败 永远永远"
+                })   
+                }
                 )
     }
 
